@@ -3,11 +3,12 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Redirect, router } from "expo-router";
 import { useGlobalContext } from "../context/GlobalProvider";
+import "../global.css";
 
 const onboarding = () => {
   const { loading, isLogged } = useGlobalContext();
 
-  if (!loading && isLogged) return <Redirect href='/home' />;
+  if (!loading && isLogged) return <Redirect href='/dashboard' />;
   return (
     <SafeAreaView className='bg-white h-full'>
       <ScrollView className=' h-full'>
@@ -18,7 +19,7 @@ const onboarding = () => {
           </Text>
           <TouchableOpacity
             onPress={() => router.push("/sign-up")}
-            className='w-full mt-16 '
+            className='w-full mt-16 bg-black rounded-md p-2'
           >
             <Text className='text-base font-psemibold text-center text-white'>
               GET STARTED NOW

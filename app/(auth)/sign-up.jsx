@@ -6,6 +6,7 @@ import {
   ScrollView,
   Dimensions,
   Alert,
+  TouchableOpacity,
 } from "react-native";
 import { Link, router } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -77,13 +78,6 @@ const SignUp = () => {
             handleChangeText={(e) => setForm({ ...form, email: e })}
             otherStyles='mt-7'
             keyboardType='email-address'
-          />
-          <FormField
-            title='Phone'
-            value={form.phone}
-            handleChangeText={(e) => setForm({ ...form, phone: e })}
-            otherStyles='mt-7'
-            keyboardType='phone-pad'
           />
 
           <FormField
