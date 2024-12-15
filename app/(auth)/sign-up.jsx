@@ -35,8 +35,7 @@ const SignUp = () => {
       const result = await registerUser(
         form.email,
         form.password,
-        form.username,
-        form.phone
+        form.username
       );
       setUser(result);
       setIsLogged(true);

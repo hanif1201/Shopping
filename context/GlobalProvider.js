@@ -30,16 +30,6 @@ const GlobalProvider = ({ children }) => {
     fetchUser();
   }, []);
 
-  const handleSignOut = async () => {
-    try {
-      await signOut();
-      setIsLogged(false);
-      setUser(null);
-    } catch (error) {
-      console.error("Sign out failed:", error);
-    }
-  };
-
   return (
     <GlobalContext.Provider
       value={{
@@ -48,7 +38,6 @@ const GlobalProvider = ({ children }) => {
         user,
         setUser,
         loading,
-        signOut: handleSignOut, // Expose signOut function
       }}
     >
       {children}
