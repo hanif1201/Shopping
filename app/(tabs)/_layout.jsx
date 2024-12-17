@@ -6,7 +6,7 @@ import icons from "../../constants/icons";
 
 const TabIcon = ({ icon, color, name, focused, avatar }) => {
   return (
-    <View className='flex items-center justify-center gap-2'>
+    <View className='flex items-center justify-center '>
       {avatar ? (
         <Image
           source={{ uri: avatar }} // Use the avatar URL
@@ -22,7 +22,9 @@ const TabIcon = ({ icon, color, name, focused, avatar }) => {
         />
       )}
       <Text
-        className={`${focused ? "font-psemibold" : "font-pregular"} text-xs`}
+        className={`${
+          focused ? "font-psemibold" : "font-pregular"
+        } text-[10px] text-center w-full`}
         style={{ color: color }}
       >
         {name}
@@ -45,14 +47,19 @@ const TabLayout = () => {
             backgroundColor: "#ffff",
             borderTopWidth: 1,
             height: 60,
-            borderTopLeftRadius: 40,
-            borderTopRightRadius: 40,
+            // borderTopLeftRadius: 40,
+            // borderTopRightRadius: 40,
             shadowColor: "#000",
             shadowOffset: { width: 2, height: -2 },
             shadowOpacity: 0.25,
             shadowRadius: 4,
             elevation: 5,
+            paddingTop: 10,
           },
+          // tabBarItemStyle: {
+          //   justifyContent: "center", // Center the tab item
+          //   alignItems: "center", // Center the tab item
+          // },
         }}
       >
         <Tabs.Screen
@@ -70,9 +77,24 @@ const TabLayout = () => {
             ),
           }}
         />
+        <Tabs.Screen
+          name='settings'
+          options={{
+            title: "Settings",
+            headerShown: false,
+            tabBarIcon: ({ color, focused }) => (
+              <TabIcon
+                icon={icons.home05}
+                color={color}
+                name='Settings'
+                focused={focused}
+              />
+            ),
+          }}
+        />
       </Tabs>
 
-      <StatusBar backgroundColor='#218225' style='light' />
+      <StatusBar backgroundColor='#2563eb' style='light' />
     </>
   );
 };
