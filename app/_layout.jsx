@@ -43,8 +43,16 @@ export default function RootLayout() {
         <Stack.Screen name='index' options={{ headerShown: false }} />
         <Stack.Screen name='(auth)' options={{ headerShown: false }} />
         <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
+        <Stack.Screen
+          name='pages/ListDetailsScreen'
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='pages/AddListScreen'
+          options={{ headerShown: false }}
+        />
       </Stack>
-      <StatusBar backgroundColor='#218225' style='light' />
+      <StatusBar backgroundColor='#2563eb' style='light' />
     </GlobalProvider>
   );
 }

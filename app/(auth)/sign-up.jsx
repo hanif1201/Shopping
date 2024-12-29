@@ -87,7 +87,7 @@ const SignUp = () => {
           />
 
           <TouchableOpacity
-            className='mt-7 bg-secondary p-4 rounded-lg'
+            className='mt-7 bg-[#2563eb] p-4 rounded-lg'
             onPress={submit}
             disabled={isSubmitting}
           >
@@ -102,7 +102,7 @@ const SignUp = () => {
             </Text>
             <Link
               href='/sign-in'
-              className='text-lg font-psemibold text-secondary'
+              className='text-lg font-psemibold color-[#2563eb]'
             >
               Login
             </Link>

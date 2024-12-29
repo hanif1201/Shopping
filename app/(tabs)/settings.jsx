@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { User } from "lucide-react-native";
 import { StyleSheet, Text, View, TouchableOpacity, Switch } from "react-native";
-import { signOut } from "../../lib/Appwrite";
+import { signOut, getCurrentUser } from "../../lib/Appwrite";
 import { router } from "expo-router";
 import { useGlobalContext } from "../../context/GlobalProvider";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const settings = () => {
-  const [isNotificationsEnabled, setIsNotificationsEnabled] =
-    React.useState(true);
+  const [isNotificationsEnabled, setIsNotificationsEnabled] = useState(true);
+  const [userName, setUserName] = useState("");
 
   const { setUser, setIsLogged } = useGlobalContext();
   const logout = async () => {
@@ -20,6 +20,21 @@ const settings = () => {
     router.replace("/sign-in");
   };
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const userData = await getCurrentUser();
+        setUserName(userData.username || "User");
+        // setEmail(userData.email || "Email");
+        // setPhone(userData.phone || "Phone");
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
   return (
     <SafeAreaView style={styles.container} edges={["top"]}>
       <View style={styles.container}>
@@ -28,7 +43,7 @@ const settings = () => {
             <User color='#2563eb' size={24} />
           </View>
           <View>
-            <Text style={styles.userName}>John Doe</Text>
+            <Text style={styles.userName}>{userName}</Text>
             <Text style={styles.planText}>Free Plan</Text>
           </View>
         </View>
@@ -67,8 +82,12 @@ const settings = () => {
             </TouchableOpacity>
           </View>
 
-          <TouchableOpacity onPress={logout}>
-            <Text>Logout</Text>
+          <TouchableOpacity
+            style={styles.upgradeButton}
+            className=' p-2 rounded-md'
+            onPress={logout}
+          >
+            <Text className='text-white text-center'>Logout</Text>
           </TouchableOpacity>
         </View>
       </View>

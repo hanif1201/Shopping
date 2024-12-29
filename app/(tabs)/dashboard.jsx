@@ -8,8 +8,11 @@ import {
 } from "react-native";
 import { ShoppingCart, AlertTriangle } from "lucide-react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useNavigation } from "@react-navigation/native";
+import { router } from "expo-router";
 
 const dashboard = () => {
+  const navigation = useNavigation();
   const lists = [
     {
       id: 1,
@@ -43,7 +46,12 @@ const dashboard = () => {
             <TouchableOpacity
               key={list.id}
               style={styles.listCard}
-              onPress={() => navigation.navigate("ListDetails", { list })}
+              onPress={() =>
+                router.push({
+                  pathname: "/pages/ListDetailsScreen",
+                  params: { list: JSON.stringify(list) },
+                })
+              }
             >
               <View style={styles.listHeader}>
                 <View>
@@ -74,7 +82,7 @@ const dashboard = () => {
 
         <TouchableOpacity
           style={styles.fab}
-          onPress={() => navigation.navigate("AddList")}
+          onPress={() => router.push("/pages/AddListScreen")}
         >
           <Text style={styles.fabText}>+</Text>
         </TouchableOpacity>
