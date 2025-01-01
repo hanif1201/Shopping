@@ -6,34 +6,45 @@ import {
   TouchableOpacity,
   StyleSheet,
   Alert,
+  ScrollView,
 } from "react-native";
 import { createList } from "../../lib/Appwrite";
+import { router } from "expo-router";
+
+// Common shopping list suggestions with categories
+const LIST_SUGGESTIONS = {
+  "Recently Used": ["Groceries", "Home Items", "Personal Care"],
+  Popular: ["Electronics", "Clothes", "Books"],
+  Special: ["Party Supplies", "Holiday Shopping", "Gifts"],
+  Essentials: ["Office Supplies", "Emergency Items", "Pet Supplies"],
+};
 
 const AddListScreen = ({ navigation }) => {
   const [listName, setListName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const handleSelectSuggestion = (suggestion) => {
+    setListName(suggestion);
+  };
+
   const handleCreateList = async () => {
     try {
-      // Validate input
       if (!listName.trim()) {
         Alert.alert("Error", "Please enter a list name");
         return;
       }
 
       setIsLoading(true);
-
-      // Create the main list
-      const newList = await createList(
-        listName.trim(),
-        "Shopping list" // Simple description
-      );
+      const newList = await createList(listName.trim(), "Shopping list");
 
       Alert.alert("Success", "List created successfully", [
         {
           text: "Add Products",
           onPress: () =>
-            navigation.navigate("AddProduct", { listId: newList.$id }),
+            router.push({
+              pathname: "/pages/AddProductScreen",
+              params: { listId: newList.$id },
+            }),
         },
         {
           text: "Go Back",
@@ -49,13 +60,44 @@ const AddListScreen = ({ navigation }) => {
     }
   };
 
+  const renderSuggestionCategory = (category, suggestions) => (
+    <View style={styles.categoryContainer} key={category}>
+      <Text style={styles.categoryTitle}>{category}</Text>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.chipsContainer}
+      >
+        {suggestions.map((suggestion) => (
+          <TouchableOpacity
+            key={suggestion}
+            style={[
+              styles.chip,
+              listName === suggestion && styles.selectedChip,
+            ]}
+            onPress={() => handleSelectSuggestion(suggestion)}
+          >
+            <Text
+              style={[
+                styles.chipText,
+                listName === suggestion && styles.selectedChipText,
+              ]}
+            >
+              {suggestion}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+    </View>
+  );
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Create New List</Text>
       </View>
 
-      <View style={styles.content}>
+      <ScrollView style={styles.content}>
         <View style={styles.inputGroup}>
           <Text style={styles.label}>List Name</Text>
           <TextInput
@@ -66,6 +108,12 @@ const AddListScreen = ({ navigation }) => {
             placeholderTextColor='#666'
           />
         </View>
+
+        <Text style={styles.suggestionsTitle}>Suggested Lists</Text>
+
+        {Object.entries(LIST_SUGGESTIONS).map(([category, suggestions]) =>
+          renderSuggestionCategory(category, suggestions)
+        )}
 
         <TouchableOpacity
           style={[
@@ -79,7 +127,7 @@ const AddListScreen = ({ navigation }) => {
             {isLoading ? "Creating..." : "Create List"}
           </Text>
         </TouchableOpacity>
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -121,12 +169,59 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#e5e7eb",
   },
+  suggestionsTitle: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: "#111",
+    marginBottom: 16,
+  },
+  categoryContainer: {
+    marginBottom: 20,
+  },
+  categoryTitle: {
+    fontSize: 16,
+    fontWeight: "500",
+    color: "#4b5563",
+    marginBottom: 12,
+  },
+  chipsContainer: {
+    paddingRight: 16,
+  },
+  chip: {
+    backgroundColor: "white",
+    borderRadius: 20,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    marginRight: 8,
+    borderWidth: 1,
+    borderColor: "#e5e7eb",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 1,
+    elevation: 2,
+  },
+  selectedChip: {
+    backgroundColor: "#2563eb",
+    borderColor: "#2563eb",
+  },
+  chipText: {
+    fontSize: 14,
+    color: "#4b5563",
+  },
+  selectedChipText: {
+    color: "white",
+  },
   createButton: {
     backgroundColor: "#2563eb",
     padding: 16,
     borderRadius: 8,
     alignItems: "center",
-    marginTop: 16,
+    marginTop: 24,
+    marginBottom: 32,
   },
   createButtonDisabled: {
     backgroundColor: "#93c5fd",

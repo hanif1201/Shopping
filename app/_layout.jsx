@@ -4,6 +4,8 @@ import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import GlobalProvider from "../context/GlobalProvider";
+import { PaperProvider } from "react-native-paper";
+
 import "../global.css";
 
 export default function RootLayout() {
@@ -38,21 +40,27 @@ export default function RootLayout() {
   }
 
   return (
-    <GlobalProvider>
-      <Stack>
-        <Stack.Screen name='index' options={{ headerShown: false }} />
-        <Stack.Screen name='(auth)' options={{ headerShown: false }} />
-        <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
-        <Stack.Screen
-          name='pages/ListDetailsScreen'
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name='pages/AddListScreen'
-          options={{ headerShown: false }}
-        />
-      </Stack>
-      <StatusBar backgroundColor='#2563eb' style='light' />
-    </GlobalProvider>
+    <PaperProvider>
+      <GlobalProvider>
+        <Stack>
+          <Stack.Screen name='index' options={{ headerShown: false }} />
+          <Stack.Screen name='(auth)' options={{ headerShown: false }} />
+          <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
+          <Stack.Screen
+            name='pages/ListDetailsScreen'
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name='pages/AddListScreen'
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name='pages/AddProductScreen'
+            options={{ headerShown: false }}
+          />
+        </Stack>
+        <StatusBar backgroundColor='#2563eb' style='light' />
+      </GlobalProvider>
+    </PaperProvider>
   );
 }

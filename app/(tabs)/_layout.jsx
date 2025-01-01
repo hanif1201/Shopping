@@ -94,7 +94,9 @@ const TabLayout = () => {
         />
       </Tabs>
 
-      <StatusBar backgroundColor='#2563eb' style='light' />
+      <StatusBar backgroundColor='#0da357' style='light' />
+
+      {/* #2563eb */}
     </>
   );
 };
