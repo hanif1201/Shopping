@@ -205,8 +205,8 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   selectedChip: {
-    backgroundColor: "#2563eb",
-    borderColor: "#2563eb",
+    backgroundColor: "#0da357",
+    borderColor: "#0da357",
   },
   chipText: {
     fontSize: 14,
@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
     color: "white",
   },
   createButton: {
-    backgroundColor: "#2563eb",
+    backgroundColor: "#0da357",
     padding: 16,
     borderRadius: 8,
     alignItems: "center",

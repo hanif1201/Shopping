@@ -40,7 +40,7 @@ const settings = () => {
       <View style={styles.container}>
         <View style={styles.profileCard}>
           <View style={styles.avatarContainer}>
-            <User color='#2563eb' size={24} />
+            <User color='#0da357' size={24} />
           </View>
           <View>
             <Text style={styles.userName}>{userName}</Text>
@@ -68,7 +68,7 @@ const settings = () => {
               value={isNotificationsEnabled}
               onValueChange={setIsNotificationsEnabled}
               trackColor={{ false: "#ddd", true: "#93c5fd" }}
-              thumbColor={isNotificationsEnabled ? "#2563eb" : "#f4f3f4"}
+              thumbColor={isNotificationsEnabled ? "#0da357" : "#f4f3f4"}
             />
           </View>
 
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     color: "#666",
   },
   upgradeButton: {
-    backgroundColor: "#2563eb",
+    backgroundColor: "#0da357",
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 6,

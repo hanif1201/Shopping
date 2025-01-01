@@ -163,7 +163,7 @@ const ListDetailsScreen = () => {
   if (isLoading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size='large' color='#2563eb' />
+        <ActivityIndicator size='large' color='#0da357' />
       </View>
     );
   }
@@ -266,14 +266,14 @@ const ListDetailsScreen = () => {
                     style={styles.quantityButton}
                     onPress={() => handleUpdateQuantity(-1)}
                   >
-                    <Minus size={20} color='#2563eb' />
+                    <Minus size={20} color='#0da357' />
                   </TouchableOpacity>
                   <Text style={styles.quantityValue}>{quantity}</Text>
                   <TouchableOpacity
                     style={styles.quantityButton}
                     onPress={() => handleUpdateQuantity(1)}
                   >
-                    <Plus size={20} color='#2563eb' />
+                    <Plus size={20} color='#0da357' />
                   </TouchableOpacity>
                 </View>
               </View>
@@ -460,7 +460,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   unitButtonSelected: {
-    backgroundColor: "#2563eb",
+    backgroundColor: "#0da357",
   },
   unitButtonText: {
     fontSize: 16,
@@ -494,7 +494,7 @@ const styles = StyleSheet.create({
     minWidth: 100,
   },
   saveButton: {
-    backgroundColor: "#2563eb",
+    backgroundColor: "#0da357",
     minWidth: 100,
   },
   cancelButtonText: {
@@ -514,7 +514,7 @@ const styles = StyleSheet.create({
     width: 56,
     height: 56,
     borderRadius: 28,
-    backgroundColor: "#2563eb",
+    backgroundColor: "#0da357",
     justifyContent: "center",
     alignItems: "center",
     elevation: 4,

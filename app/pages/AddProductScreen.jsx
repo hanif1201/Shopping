@@ -131,9 +131,9 @@ const AddProductScreen = ({ route, navigation }) => {
                   style={styles.checkbox}
                 >
                   {product.bought ? (
-                    <Check size={20} color='#2563eb' />
+                    <Check size={20} color='#0da357' />
                   ) : (
-                    <Square size={20} color='#2563eb' />
+                    <Square size={20} color='#0da357' />
                   )}
                 </TouchableOpacity>
 
@@ -157,7 +157,7 @@ const AddProductScreen = ({ route, navigation }) => {
                     }
                     style={styles.quantityButton}
                   >
-                    <Minus size={16} color='#2563eb' />
+                    <Minus size={16} color='#0da357' />
                   </TouchableOpacity>
 
                   <Text style={styles.quantityText}>{product.quantity}</Text>
@@ -172,7 +172,7 @@ const AddProductScreen = ({ route, navigation }) => {
                     }
                     style={styles.quantityButton}
                   >
-                    <Plus size={16} color='#2563eb' />
+                    <Plus size={16} color='#0da357' />
                   </TouchableOpacity>
                 </View>
               </View>
@@ -202,7 +202,7 @@ const AddProductScreen = ({ route, navigation }) => {
                 onPress={() => handleQuantityChange(-1)}
                 style={styles.quantityButton}
               >
-                <Minus size={16} color='#2563eb' />
+                <Minus size={16} color='#0da357' />
               </TouchableOpacity>
 
               <Text style={styles.quantityText}>{quantity}</Text>
@@ -211,7 +211,7 @@ const AddProductScreen = ({ route, navigation }) => {
                 onPress={() => handleQuantityChange(1)}
                 style={styles.quantityButton}
               >
-                <Plus size={16} color='#2563eb' />
+                <Plus size={16} color='#0da357' />
               </TouchableOpacity>
             </View>
           </View>
@@ -342,7 +342,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   addButton: {
-    backgroundColor: "#2563eb",
+    backgroundColor: "#0da357",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
@@ -366,7 +366,7 @@ const styles = StyleSheet.create({
     borderTopColor: "#e5e7eb",
   },
   finishButton: {
-    backgroundColor: "#2563eb",
+    backgroundColor: "#0da357",
     padding: 16,
     borderRadius: 8,
     alignItems: "center",

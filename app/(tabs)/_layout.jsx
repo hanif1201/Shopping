@@ -40,7 +40,7 @@ const TabLayout = () => {
     <>
       <Tabs
         screenOptions={{
-          tabBarActiveTintColor: "#2563eb",
+          tabBarActiveTintColor: "#0da357",
           tabBarInactiveTintColor: "#000",
           tabBarShowLabel: false,
           tabBarStyle: {
@@ -96,7 +96,7 @@ const TabLayout = () => {
 
       <StatusBar backgroundColor='#0da357' style='light' />
 
-      {/* #2563eb */}
+      {/* #0da357 */}
     </>
   );
 };

@@ -188,7 +188,7 @@ const Dashboard = () => {
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size='large' color='#2563eb' />
+        <ActivityIndicator size='large' color='#0da357' />
       </View>
     );
   }
@@ -218,15 +218,15 @@ const Dashboard = () => {
           <RefreshControl
             refreshing={refreshing}
             onRefresh={onRefresh}
-            tintColor='#2563eb'
-            colors={["#2563eb"]}
+            tintColor='#0da357'
+            colors={["#0da357"]}
             progressBackgroundColor='#ffffff'
           />
         }
       >
         <View style={styles.enjoyCard}>
           <View>
-            <Text style={styles.enjoyTitle}>Enjoying Listonic?</Text>
+            <Text style={styles.enjoyTitle}>Enjoying EasyCart?</Text>
             <View style={styles.enjoyOptions}>
               <Text style={styles.notReallyText}>NOT REALLY</Text>
               <Text style={styles.yesText}>YES!</Text>
@@ -367,7 +367,7 @@ const styles = StyleSheet.create({
     borderRadius: 2,
   },
   fab: {
-    backgroundColor: "#2563eb",
+    backgroundColor: "#0da357",
     margin: 16,
     padding: 12,
     borderRadius: 24,
@@ -417,7 +417,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   modalButtonPrimary: {
-    backgroundColor: "#2563eb",
+    backgroundColor: "#0da357",
     borderRadius: 6,
   },
   modalButtonText: {
